@@ -14,6 +14,9 @@
   async function run() {
     
     
+    var videos = (<any>(<Office.Types.ItemRead>Office.context.mailbox.item).getRegExMatches()).JiraCasenumber;
+    alert(videos);
+    
     /**
      * Insert your Outlook code here
      */

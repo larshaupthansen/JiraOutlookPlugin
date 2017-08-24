@@ -13,7 +13,7 @@
 
   <!--Version. Updates from the store only get triggered if there is a version change. -->
   <Version>1.0.0.0</Version>
-  <ProviderName>[Provider name]</ProviderName>
+  <ProviderName>Apps You Need</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <!-- The display name of your add-in. Used on the store and various places of the Office UI such as the add-ins dialog. -->
   <DisplayName DefaultValue="Jira Outlook Add-in" />
@@ -24,7 +24,7 @@
   <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/hi-res-icon.png"/>
 
   <!--If you plan to submit this add-in to the Office Store, uncomment the SupportUrl element below-->
-  <SupportUrl DefaultValue="https://www.itera.dk" />
+  <SupportUrl DefaultValue="https://github.com/larshaupthansen/JiraOutlookPlugin" />
 
   <!-- Domains that will be allowed when navigating. For example, if you use ShowTaskpane and then have an href link, navigation will only be allowed if the domain is on this list. -->
   <AppDomains>
@@ -54,8 +54,12 @@
   <Permissions>ReadWriteItem</Permissions>
   <Rule xsi:type="RuleCollection" Mode="Or">
     <Rule xsi:type="ItemIs" ItemType="Message" FormType="Read" />
+    <Rule xsi:type="ItemHasRegularExpressionMatch" 
+    PropertyName="BodyAsPlaintext" 
+    RegExName="JiraCasenumber" 
+    RegExValue="[A-Za-z]+-\d+"/>
   </Rule>
-  <DisableEntityHighlighting>false</DisableEntityHighlighting>
+  <DisableEntityHighlighting>true</DisableEntityHighlighting>
 
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/mailappversionoverrides" xsi:type="VersionOverridesV1_0">
     <Requirements>
@@ -70,6 +74,7 @@
           <!-- Location of the Functions that UI-less buttons can trigger (ExecuteFunction Actions). -->
           <FunctionFile resid="functionFile" />
 
+        
           <!-- Message Read -->
           <ExtensionPoint xsi:type="MessageReadCommandSurface">
             <!-- Use the default tab of the ExtensionPoint or create your own with <CustomTab id="myTab"> -->
@@ -113,10 +118,10 @@
         <bt:Url id="messageReadTaskPaneUrl" DefaultValue="https://localhost:3000/index.html"/>
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="groupLabel" DefaultValue="My Add-in Group"/>
+        <bt:String id="groupLabel" DefaultValue="Jira Addin"/>
         <bt:String id="customTabLabel"  DefaultValue="My Add-in Tab"/>
-        <bt:String id="paneReadButtonLabel" DefaultValue="Display all properties"/>
-        <bt:String id="paneReadSuperTipTitle" DefaultValue="Get all properties"/>
+        <bt:String id="paneReadButtonLabel" DefaultValue="Show add-in"/>
+        <bt:String id="paneReadSuperTipTitle" DefaultValue="Show add-in"/>
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="paneReadSuperTipDescription" DefaultValue="Opens a pane displaying all available properties. This is an example of a button that opens a task pane."/>
