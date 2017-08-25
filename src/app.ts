@@ -7,19 +7,16 @@
   // The initialize function must be run each time a new page is loaded
   Office.initialize = (reason) => {
     $(document).ready(() => {
-      $('#run').click(run);
+      $("#run").click(run);
     });
   };
 
   async function run() {
-    
-    
-    var videos = (<any>(<Office.Types.ItemRead>Office.context.mailbox.item).getRegExMatches()).JiraCasenumber;
+    const mailItem = Office.context.mailbox.item as Office.Types.ItemRead;
+    const videos = ( mailItem as any).getRegExMatches().JiraCasenumber;
     alert(videos);
-    
     /**
      * Insert your Outlook code here
      */
-    
   }
 })();
