@@ -5,32 +5,29 @@
    jQuery(document).ready(function(){
       if (window.location.search) {
         // Check if warning should be displayed
-        var warn = this.getParameterByName('warn');
+        const warn = this.getParameterByName("warn");
         if (warn) {
-          $('.not-configured-warning').show();
+          $(".not-configured-warning").show();
         } else {
           // See if the config values were passed
           // If so, pre-populate the values
-          var url = this.getParameterByName('jiraUrl');
+          const url = this.getParameterByName("jiraUrl");
 
-          $('#jira-url').val(url);         
+          $("#jira-url").val(url);
         }
       }
 
-      // When the GitHub username changes,
-      // try to load Gists
-      $('#jira-url').on('change', function(){
-      
-       
+      $("#jira-url").on("change", () => {
+       // do stuff
       });
 
       // When the Done button is clicked, send the
       // values back to the caller as a serialized
       // object.
-      $('#settings-done').on('click', function() {
-        var settings:any= {};
+      $("#settings-done").on("click", () => {
+        const  settings: Settings = new Settings();
 
-        settings.jiraUrl = $('#jira-url').val();
+        settings.jiraUrl = $("#jira-url").val();
 
       });
     });
@@ -45,16 +42,16 @@
       url = window.location.href;
     }
     name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-      results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
+    const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
+    const results = regex.exec(url);
+    if (!results) { return null; }
+    if (!results[2]) {
+      return "";
+    }
     return decodeURIComponent(results[2].replace(/\+/g, " "));
   }
 
   async function run() {
-    
-       
-    
+    // do stuff
   }
 })();
